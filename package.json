@@ -1,0 +1,23 @@
+{
+  "name": "works",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "build:css": "postcss src/style/tailwind.css -o  src/style/main.css"
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^5.2.0",
+    "tailwind-underline-utils": "^1.1.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "autoprefixer": "^10.3.2",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.7",
+    "vite": "^2.5.1"
+  }
+}
