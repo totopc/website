@@ -31,7 +31,7 @@ return (
 
             <li className="flex my-5">
             <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">04</p>
-            <p className="">Whirpool Smart Appliance</p>
+            <p className="">Smart Appliance</p>
             </li>
 
             <li className="flex my-5">
@@ -49,11 +49,11 @@ return (
         </ul>
 
         <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 border-2 border-gray-800 mt-5 p-5">
-            <img className="  filter blur-sm" src="src/images/02_ttm/featured.png" alt="" />
+            <img className="  filter blur-sm" src="images/02_ttm/featured.png" alt="" />
         </div>
 
         <div className=" z-10 col-start-2 col-span-4 border-2 border-gray-800 m p-5">
-            <img src="src/images/01_redact/featured.png" alt="" />
+            <img src="images/01_redact/featured.png" alt="" />
         </div>
         <div className="font-orbitron col-start-2 col-span-5 mt-10 flex">
         <h1 className=" font-black text-green2 text-6xl">01</h1>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
-import About from './pages/About'
+import About from './pages/about'
 import Portfolio from './pages/portfolio'
 import Home from './pages/home'
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
