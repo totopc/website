@@ -1,4 +1,10 @@
 import React from 'react'
+import imgRedact from '/src/images/redact/featured.png'
+import imgTTM from '/src/images/ttm/featured.png'
+document.getElementById('imgRedact').src = imgRedact;
+document.getElementById('imgTTM').src = imgTTM;
+
+
 
 
 const Home = () =>{
@@ -50,11 +56,11 @@ return (
         </ul>
 
         <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 border-2 border-gray-800 mt-5 p-5">
-            <img className="  filter blur-sm" src="src/featured.png" alt="" />
+            <img id="imgTTM" className="  filter blur-sm"  alt="" />
         </div>
 
         <div className=" z-10 col-start-2 col-span-4 border-2 border-gray-800 m p-5">
-            <img src="src/featured_2.png" alt="" />
+            <img id="imgRedact"  alt="" />
         </div>
         <div className="font-orbitron col-start-2 col-span-5 mt-10 flex">
         <h1 className=" font-black text-green2 text-6xl">01</h1>
