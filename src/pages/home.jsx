@@ -1,15 +1,17 @@
 import React from 'react'
 import imgRedact from '/src/images/redact/featured.png'
 import imgTTM from '/src/images/ttm/featured.png'
-document.getElementById('imgRedact').src = imgRedact;
-document.getElementById('imgTTM').src = imgTTM;
+import bgImg from '/src/images/bg.png'
+
+// document.getElementById('imgRedact').src = imgRedact;
+// document.getElementById('imgTTM').src = imgTTM;
 
 
 
 
 const Home = () =>{
 return (
-    <div className="w-full text-white overflow-hidden ">
+    <div style={{ backgroundImage: `url(${bgImg})` }} className="w-full text-white overflow-hidden ">
 
     <div className=" px-10 1/2 p-5 grid grid-cols-8 gap-4  text-left">
         <div className="z-10 col-start-2 col-span-5">
@@ -56,11 +58,10 @@ return (
         </ul>
 
         <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 border-2 border-gray-800 mt-5 p-5">
-            <img id="imgTTM" className="  filter blur-sm"  alt="" />
+            <img  className="filter blur-sm" src={imgTTM} />
         </div>
-
         <div className=" z-10 col-start-2 col-span-4 border-2 border-gray-800 m p-5">
-            <img id="imgRedact"  alt="" />
+            <img   alt=""  src={imgRedact} />
         </div>
         <div className="font-orbitron col-start-2 col-span-5 mt-10 flex">
         <h1 className=" font-black text-green2 text-6xl">01</h1>
