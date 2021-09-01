@@ -11,3 +11,21 @@
 body{
     background-color: black;
 }
+
+.nav{
+  display: flex;
+  margin-top: 1rem;
+}
+
+.nav:active{
+    transform: scale(1.25) translateZ(0);
+}
+
+.nav:hover {
+    transform: scale(1.25) translateZ(0);
+}
+
+
+.nav:hover > .nav:not(:hover) {
+    filter: brightness(1) saturate(0) contrast(1) blur(4px);
+}

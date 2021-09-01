@@ -3,14 +3,9 @@ import imgRedact from '/src/images/redact/featured.png'
 import imgTTM from '/src/images/ttm/featured.png'
 import bgImg from '/src/images/bg.png'
 
-// document.getElementById('imgRedact').src = imgRedact;
-// document.getElementById('imgTTM').src = imgTTM;
-
-
-
-
 const Home = () =>{
 return (
+  
     <div style={{ backgroundImage: `url(${bgImg})` }} className="w-full text-white overflow-hidden ">
 
     <div className=" px-10 1/2 p-5 grid grid-cols-8 gap-4  text-left">
@@ -22,31 +17,31 @@ return (
          <h1 className = "text-7xl font-russo">REDACT.DEV</h1>
         </div>
         <ul className=" col-start-7 col-span-2 row-span-5 font-orbitron">
-            <li className="flex my-5">
+            <li className="flex my-5" class="nav">
             <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">01</p>
             <p className="underline  underline-green2-DEFAULT underline-style-wavy">Redact.dev</p>
             </li>
 
-            <li className="ml-10 filter blur-sm">
-            <li className="flex my-5">
+        
+            <li className="flex my-5" class="nav" >
             <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">02</p>
             <p className="">TTM</p>
             </li>
             
-            <li className="flex my-5">
+            <li className="flex my-5" class="nav">
             <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">03</p>
             <p className="">T-Mobile Pets </p>
             </li>
 
-            <li className="flex my-5">
+            <li className="flex my-5" class="nav">
             <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">04</p>
             <p className="">Smart Appliance</p>
             </li>
 
-            <li className="flex my-5">
+            <li className="flex my-5" class="nav">
             <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">04</p>
             <p className="">Woobot.io</p>
-            </li>
+           
             
 
             </li>
