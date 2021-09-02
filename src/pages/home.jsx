@@ -1,9 +1,34 @@
-import React from 'react'
-import imgRedact from '/src/images/redact/featured.png'
-import imgTTM from '/src/images/ttm/featured.png'
-import bgImg from '/src/images/bg.png'
+import React, {useState, useEffect} from 'react';
+import imgRedact from '/src/images/redact/featured.png';
+import imgTTM from '/src/images/ttm/featured.png';
+import bgImg from '/src/images/bg.png';
+
+const projects = [
+    {name: "Redact.dev", value:"01"},
+    {name: "TTM", value:"02"},
+    {name: "T-Mobile Pets", value:"03"},
+    {name: "Smart Appliance", value:"04"},
+    {name: "Woobot.io", value:"05"}
+ ];
+
+
 
 const Home = () =>{
+    const [defaultProject, newProject] = useState('01')
+    
+
+    
+    function makeFocal(e){
+        e.target.className="underline  underline-green2-DEFAULT underline-style-wavy"
+
+    
+    }
+    function makeBlur(e){
+        e.target.className=""
+    }
+
+
+     
 return (
   
     <div style={{ backgroundImage: `url(${bgImg})` }} className="w-full text-white overflow-hidden ">
@@ -17,41 +42,17 @@ return (
          <h1 className = "text-7xl font-russo">REDACT.DEV</h1>
         </div>
         <ul className=" col-start-7 col-span-2 row-span-5 font-orbitron">
-            <li className="flex my-5" class="nav">
-            <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">01</p>
-            <p className="underline  underline-green2-DEFAULT underline-style-wavy">Redact.dev</p>
-            </li>
-
-        
-            <li className="flex my-5" class="nav" >
-            <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">02</p>
-            <p className="">TTM</p>
-            </li>
-            
-            <li className="flex my-5" class="nav">
-            <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">03</p>
-            <p className="">T-Mobile Pets </p>
-            </li>
-
-            <li className="flex my-5" class="nav">
-            <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">04</p>
-            <p className="">Smart Appliance</p>
-            </li>
-
-            <li className="flex my-5" class="nav">
-            <p className="w-5 text-xs font-black text-green2  transform -rotate-90 mr-5 ">04</p>
-            <p className="">Woobot.io</p>
-           
-            
-
-            </li>
-
-            
-
-            
-       
+  {projects.map((projects)=>(
+      <li key={projects.value} onMouseOver={()=>  newProject(projects.value)} 
+      className="flex my-5" class="nav">
+          <p className="w-5 text-xs font-black text-green2  transform  -rotate-90 mr-2 " >{projects.value}</p>
+          <p 
+          className=""><a href="#" class="wavey">{projects.name}</a></p>
+      </li>
+      
+  ))}
+  {/* <h1>{defaultProject}</h1> */}
         </ul>
-
         <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 border-2 border-gray-800 mt-5 p-5">
             <img  className="filter blur-sm" src={imgTTM} />
         </div>
