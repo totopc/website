@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import imgRedact from '/src/images/redact/featured.png';
-import imgTTM from '/src/images/ttm/featured.png';
+import React, {useState} from 'react';
+import{workSummary} from '../data/workSummary';
 import bgImg from '/src/images/bg.png';
 
 const projects = [
@@ -19,24 +18,28 @@ const Home = () =>{
     
 
     
- useEffect (()=> {
-    console.log('setProject changed')
-}, [defaultProject])
+//  useEffect (()=> {
+//     console.log('setProject changed')
+// }, [defaultProject])
      
 return (
   
     <div style={{ backgroundImage: `url(${bgImg})` }} className="w-full text-white overflow-hidden ">
 
     <div className=" px-10 1/2 p-5 grid grid-cols-8 gap-4  text-left">
-        <div className="z-10 col-start-2 col-span-5">
-         <h3 className = "flex text-xs font-orbitron">PROJECT NAME
-         <p className=" border-t-2 border-gray-800 w-40 ml-5 mt-1 bg">
-        </p>
-         </h3> 
-         <h1 className = "text-7xl font-russo ">REDACT.DEV</h1>
-        </div>
-        <ul className=" col-start-7 col-span-2 row-span-5 font-orbitron">
+        {workSummary.map((summary)=>(summary.id != defaultProject)?
+        (<></>):
+        ( <div className="z-10 col-start-2 col-span-5">
+        <h3 className = "flex text-xs font-orbitron">PROJECT NAME
+        <p className=" border-t-2 border-gray-800 w-40 ml-5 mt-1 bg">
+       </p>
+        </h3> 
+        <h1 className = "text-7xl font-russo ">{summary.name}</h1>
+       </div>)
+        )}
+       
 
+    <ul className=" col-start-7 col-span-2 row-span-5 font-orbitron">
             
  
   {projects.map((projects) => (projects.value!= defaultProject)?
@@ -62,39 +65,58 @@ return (
  {/* <h1>{defaultProject}</h1>
   */}
 
-        </ul>
-        <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 border-2 border-gray-800 mt-5 p-5">
-            <img  className="filter blur-sm" src={imgTTM} />
-        </div>
-        <div className=" z-10 col-start-2 col-span-4 border-2 border-gray-800 m p-5">
-            <img   alt=""  src={imgRedact} />
-        </div>
-        <div className="font-orbitron col-start-2 col-span-5 mt-10 flex">
-        <h1 className=" font-black text-green2 text-6xl">01</h1>
-        <p className=" border-t-2 border-gray-800 w-20 m-4 bg">
-        </p>
+</ul>
 
-        <p className="mt-7 -ml-20 "> 
-        Redact.dev 
-        <span className="text-green2 mx-2">◆</span> 
-        Product Design, Animation, Prototyping, Illustration
-        <span className="text-green2 mx-2">◆</span>
-        2021
-        </p>
-        
-        </div>
+{workSummary.map((summary)=> (summary.id != defaultProject) ?
+(
+<div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 mt-5 p-5">
+<img  className="filter blur-sm" src={summary.image} />
+</div>
+):(    
+        <><div className=" z-10 col-start-2 col-span-4 border-2 border-gray-800 m p-5">
+            <img alt="" src={summary.image} />
+        </div><div className="font-orbitron col-start-2 col-span-5 flex">
+                <h1 className=" font-black text-green2 text-6xl">{summary.id}</h1>
+                <p className=" border-t-2 border-gray-800 w-20 m-4 bg">
+                </p>
 
-        <div className=" font-orbitron ">
-            <p><span className="line-through text-green2">Read</span>  Read Read Read Read Read Read Read Read Read Read Read Read  ➔ </p> 
+                <p className="mt-7 -ml-20 ">
+     
+                    {summary.name}
+                    <span className="text-green2 mx-2">◆</span>
+                    {summary.category.map(cat=>(
+                        cat + ", "
+                    ))}
+                    <span className="text-green2 mx-2">◆</span>
+                    {summary.year}
+                </p>
+            </div>
+            
+            
+            <div className=" font-orbitron ">
+            <p><span className="line-through text-green2">Read</span>  Read Read Read Read  ➔ </p> 
             
         </div>
       
         <div className="col-start-2 col-span-3 ">
-            <p className= "font-buenard">Excuse me, but as a knowledgeable software developer, bugs are literally IMPOSSIBLE to fix. If you had any idea how coding worked you'd know that. It is completely unreasonable to suggest that professional developers be able to develop a game. Now you may think that us not being able to fix bugs makes us look incompetent, but you have to understand that programming is the hardest job any human can possibly do. It isn't just applying learned skills. Proper programming requires an ethereal binding of the mind and soul with the source code. It isn't as simple as the normie non-software developer types suggest. Please send more money.</p>
+            <p className= "font-buenard">{summary.summary}</p>
+ 
         </div>
         <div className="flex text-xl items-center justify-around font-russo transform rotate-90 ">
-            <p className="underline text-green2 underline-green2-DEFAULT underline-style-wavy"  >MORE INFO</p>
+            <p className=" text-green2"><a href="#" className="wavey">MORE</a></p>
         </div>
+            </>
+ 
+
+)
+
+
+)}
+
+      
+
+
+      
      
     
         <div className="flex col-span-6  border-b border-gray-800 font-orbitron  p-10">
@@ -126,6 +148,7 @@ return (
 
 
 );
+
 
 };
 export default Home;
