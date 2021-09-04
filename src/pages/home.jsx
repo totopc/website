@@ -13,12 +13,15 @@ const projects = [
 
 
 
+
 const Home = () =>{
-    const [defaultProject, newProject] = useState('01')
+    const [defaultProject, setProject] = useState('01')
     
 
     
-
+ useEffect (()=> {
+    console.log('setProject changed')
+}, [defaultProject])
      
 return (
   
@@ -39,14 +42,14 @@ return (
   {projects.map((projects) => (projects.value!= defaultProject)?
   (  
     
-      <li key={projects.value} onMouseOver={()=> newProject(projects.value)} 
+      <li key={projects.value} onMouseOver={()=> setProject(projects.value)} 
       className="filter blur-sm flex my-5 nav"  >
           <p className="w-5 text-xs font-black text-green2  transform  -rotate-90 mr-2" >{projects.value}</p>
           <p><a href="#" >{projects.name}</a></p>
       </li>
   ):
   (  
-    <li key={projects.value} onMouseOver={()=> newProject(projects.value)} 
+    <li key={projects.value} onMouseOver={()=> setProject(projects.value)} 
     className="flex my-5 navActive" >
         <p className="w-5 text-xs font-black text-green2  transform  -rotate-90 mr-2 " >{projects.value}</p>
         <p><a href="#" className="wavey">{projects.name}</a></p>
@@ -56,7 +59,8 @@ return (
   
   )}
 
-  {/* <h1>{defaultProject}</h1> */}
+ {/* <h1>{defaultProject}</h1>
+  */}
 
         </ul>
         <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 border-2 border-gray-800 mt-5 p-5">
