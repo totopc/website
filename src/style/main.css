@@ -32520,6 +32520,10 @@ body{
   margin-top: 1rem;
 }
 
+a:hover{
+  color:#319C42;
+}
+
 a.wavey {
   border-bottom:none;
   padding-bottom: 2px;

@@ -5,8 +5,8 @@ import bgImg from '/src/images/bg.png';
 const projects = [
     {name: "Redact.dev", value:"01"},
     {name: "TTM", value:"02"},
-    {name: "T-Mobile Pets", value:"03"},
-    {name: "Smart Appliance", value:"04"},
+    {name: "Pets", value:"03"},
+    {name: "Woodburn", value:"04"},
     {name: "Woobot.io", value:"05"}
  ];
 
@@ -24,9 +24,11 @@ const Home = () =>{
      
 return (
   
-    <div style={{ backgroundImage: `url(${bgImg})` }} className="w-full text-white overflow-hidden ">
 
-    <div className=" px-10 1/2 p-5 grid grid-cols-8 gap-4  text-left">
+    <div style={{ backgroundImage: `url(${bgImg})`,  backgroundRepeat:`none`, backgroundPosition:`center`, height: `100vh`, backgroundSize:`cover` }} className="  w-full text-white overflow-hidden ">
+
+
+    <div className=" p-20 1/2 p-5 grid grid-cols-8 gap-4  text-left ">
         {workSummary.map((summary)=>(summary.id != defaultProject)?
         (<></>):
         ( <div className="z-10 col-start-2 col-span-5">
@@ -39,7 +41,7 @@ return (
         )}
        
 
-    <ul className=" col-start-7 col-span-2 row-span-5 font-orbitron">
+    <ul className=" col-start-8 col-span-2 row-span-5 font-orbitron ">
             
  
   {projects.map((projects) => (projects.value!= defaultProject)?
@@ -69,12 +71,13 @@ return (
 
 {workSummary.map((summary)=> (summary.id != defaultProject) ?
 (
-<div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 mt-5 p-5">
+<> </>
+/* <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 mt-5 p-5">
 <img  className="filter blur-sm" src={summary.image} />
-</div>
+</div> */
 ):(    
-        <><div className=" z-10 col-start-2 col-span-4 border-2 border-gray-800 m p-5">
-            <img alt="" src={summary.image} />
+        <><div className=" z-10 col-start-2 col-span-2 border-2 border-gray-800 m p-5">
+            <img alt="" src={summary.image}  />
         </div><div className="font-orbitron col-start-2 col-span-5 flex">
                 <h1 className=" font-black text-green2 text-6xl">{summary.id}</h1>
                 <p className=" border-t-2 border-gray-800 w-20 m-4 bg">
@@ -94,7 +97,7 @@ return (
             
             
             <div className=" font-orbitron ">
-            <p><span className="line-through text-green2">Read</span>  Read Read Read Read  ➔ </p> 
+       
             
         </div>
       
@@ -119,23 +122,28 @@ return (
       
      
     
-        <div className="flex col-span-6  border-b border-gray-800 font-orbitron  p-10">
+        <div className="flex col-start-2 col-span-6  border-b border-gray-800 font-orbitron  py-5">
             <div className="flex-grow">
-            <p className=" text-xl font-black">TOTOPC</p>
-            <p className="text-sm">Seeeeexx</p>
+            <p className=" text-xl flex font-black">TOTOPC
+
+            <a className= "ml-2 flex items-center  " href="https://www.youtube.com/channel/UClXBtnbCQoeAyR5AQLMLCBg"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+            </svg></a>
+            
+            </p>
+            <p className="text-sm"><a href="mailto:aymarlobaton@gmail.com">raymarlobaton@gmail.com</a>
+            
+            
+            </p>
+            
             </div>
             <div className="flex items-end  "> 
             
            
 
-            <a className="mr-5" href="mailto:raymarlobaton@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-            </svg> </a>
+       
 
-            <a href="https://www.youtube.com/channel/UClXBtnbCQoeAyR5AQLMLCBg"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
-            </svg></a>
+     
                         
              
             </div>
