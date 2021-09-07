@@ -9,6 +9,7 @@ const projects = [
   { name: "Woobot.io", value: "05" },
 ];
 
+
 const Home = () => {
   const [defaultProject, setProject] = useState("01");
 
@@ -92,7 +93,7 @@ const Home = () => {
 </div> */
             <>
               <div className=" z-10 col-start-2 col-span-2 border-2 border-gray-800 m p-5">
-                <img alt="" src={summary.image} />
+                <img className="lazy" src={summary.image} />
               </div>
               <div className="font-orbitron col-start-2 col-span-5 flex">
                 <h1 className=" font-black text-green2 text-6xl">
