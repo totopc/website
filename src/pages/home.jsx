@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { workSummary } from "../data/workSummary";
-import bgVid from '/src/images/bgvid.mp4';
+import bgVid from "/src/images/bgvid.mp4";
+import ReactImageAppear from "react-image-appear";
+
+
 const projects = [
   { name: "Redact.dev", value: "01" },
   { name: "TTM", value: "02" },
@@ -9,16 +12,36 @@ const projects = [
   { name: "Woobot.io", value: "05" },
 ];
 
-
 const Home = () => {
   const [defaultProject, setProject] = useState("01");
+  const [imgsLoaded, setImgsLoaded] = useState(false)
 
+  useEffect(() => {
+    const loadImage = images => {
+      return new Promise((resolve, reject) => {
+        const loadImg = new Image()
+        loadImg.src = images.image
+        loadImg.onload = (resolve(images.image)) 
+        loadImg.onerror = err => reject(err)
+      })
+    }
+
+    Promise.all(workSummary.map(images => loadImage(images)))
+      .then(() => setImgsLoaded(true))
+      .catch(err => console.log("Failed to load images", err))
+  }, [defaultProject])
   //  useEffect (()=> {
   //     console.log('setProject changed')
   // }, [defaultProject])
 
+  //   const [defLoad, setLoad] = useState(false);
+  //   const loaded = defLoad ? {visibility: 'hidden'} : {visibility: 'hidden'};
+
+  //  useEffect(()=>{
+
+  //  },[defaultProject])
+
   return (
-      
     <div
       style={{
         backgroundImage: `url(${bgVid})`,
@@ -29,10 +52,16 @@ const Home = () => {
       }}
       className="flex  items-center   w-full text-white overflow-hidden "
     >
-<video className='flex absolute object-fill  h-screen  w-screen ' autoPlay loop muted>
-<source src={bgVid} type='video/mp4' />
-</video>
+      <video
+        className="flex absolute object-fill  h-screen  w-screen "
+        autoPlay
+        loop
+        muted
+      >
+        <source src={bgVid} type="video/mp4" />
+      </video>
       <div className="z-10    p-5 grid grid-cols-8 gap-4  text-left ">
+
         {workSummary.map((summary) =>
           summary.id != defaultProject ? (
             <></>
@@ -83,17 +112,27 @@ const Home = () => {
           {/* <h1>{defaultProject}</h1>
            */}
         </ul>
+   
 
-        {workSummary.map((summary) =>
+
+
+        {imgsLoaded ? (workSummary.map((summary)=>
           summary.id != defaultProject ? (
             <> </>
           ) : (
-            /* <div className=" w-1/4 z-0 -ml-80 absolute col-start-2 col-span-4 mt-5 p-5">
-<img  className="filter blur-sm" src={summary.image} />
-</div> */
             <>
-              <div className=" z-10 col-start-2 col-span-2 border-2 border-gray-800 m p-5">
-                <img className="lazy" src={summary.image} />
+              <div className=" z-10 col-start-2 col-span-2 border-2 border-gray-800 h-full w-full p-5">
+                <ReactImageAppear
+                
+                  placeholderStyle={{
+                    width: "1022px",
+                    height: "543px",
+                    backgroundColor: "black",
+                  }}
+                  src={summary.image}
+                  animation="fillIn"
+                  animationDuration="1s"
+                />
               </div>
               <div className="font-orbitron col-start-2 col-span-5 flex">
                 <h1 className=" font-black text-green2 text-6xl">
@@ -124,8 +163,14 @@ const Home = () => {
               </div>
             </>
           )
+        )):(<></>
+
         )}
 
+
+
+
+  
         <div className="flex col-start-2 col-span-6  border-b border-gray-800 font-orbitron  py-5">
           <div className="flex-grow">
             <p className=" text-xl flex font-black">
