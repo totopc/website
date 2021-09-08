@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { workSummary } from "../data/workSummary";
 import bgVid from "/src/images/bgvid.mp4";
 import ReactImageAppear from "react-image-appear";
+import shuffleLetters from "shuffle-letters";
+import AnimatedCursor from "react-animated-cursor";
+// import Delayed from "../data/delay";
 
 const projects = [
   { name: "Redact.dev", value: "01" },
@@ -16,6 +19,15 @@ const Home = () => {
   const [imgsLoaded, setImgsLoaded] = useState(false);
 
   useEffect(() => {
+    shuffleLetters(document.querySelector("h1"), {
+      iterations: 1,
+      fps: 20,
+      onComplete: (el) => {
+        console.log("Effect was completed.");
+        console.log(el);
+      },
+    });
+
     const loadImage = (images) => {
       return new Promise((resolve, reject) => {
         const loadImg = new Image();
@@ -28,9 +40,9 @@ const Home = () => {
     Promise.all(workSummary.map((images) => loadImage(images))).then(() =>
       setImgsLoaded(true)
     );
-  }, []);
+  }, [defaultProject]);
 
-  return (
+  return (             
     <div
       style={{
         backgroundImage: `url(${bgVid})`,
@@ -39,8 +51,19 @@ const Home = () => {
         height: `100vh`,
         backgroundSize: `cover`,
       }}
-      className="flex  items-center   w-full text-white overflow-hidden "
+      className="flex cursor  items-center cursor  w-full text-white overflow-hidden"
     >
+      <AnimatedCursor
+        innerSize={10}
+        outerSize={50}
+        color={"255, 105, 180"}
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={0.5}
+        trailingSpeed={5}
+      />
+      <span id="circle" class="circle"></span>
+
       <video
         className="flex absolute object-fill  h-screen  w-screen "
         autoPlay
@@ -49,6 +72,7 @@ const Home = () => {
       >
         <source src={bgVid} type="video/mp4" />
       </video>
+
       <div className="z-10    p-5 grid grid-cols-8 gap-4  text-left ">
         {workSummary.map((summary) =>
           summary.id != defaultProject ? (
@@ -59,18 +83,20 @@ const Home = () => {
                 PROJECT NAME
                 <p className=" border-t-2 border-gray-800 w-40 ml-5 mt-1 bg"></p>
               </h3>
-              <h1 className="text-7xl font-russo ">{summary.name}</h1>
+              <h1 className="text-7xl font-russo ">
+                {summary.name}
+              </h1>
             </div>
           )
         )}
-
-        <ul className=" col-start-8 col-span-2 row-span-5 font-orbitron ">
+        <p className=" p-3 text-7xl font-russo ">⠀</p>
+        <ul className=" md:  col-start-8 col-span-2 row-span-5 font-orbitron sm:  mt-10 ">
           {projects.map((projects) =>
             projects.value != defaultProject ? (
               <li
                 key={projects.value}
                 onMouseOver={() => setProject(projects.value)}
-                className="filter blur-sm flex my-5 nav"
+                className="md: flex filter blur-sm  my-5 nav sm:"
               >
                 <p className="w-5 text-xs font-black text-green2  transform  -rotate-90 mr-2">
                   {projects.value}
@@ -102,40 +128,40 @@ const Home = () => {
           ? workSummary.map((summary) =>
               summary.id != defaultProject ? null : (
                 <>
-                  <div
-                    className=" z-10 col-start-2 col-span-2  "
-                    style={{ height: "295", margin: "auto" }}
-                  >
+                  <div className="  col-start-2 col-span-3 flex   ">
                     <ReactImageAppear
                       placeholderStyle={{
-                        backgroundColor: "black",
+                        backgroundColor: "transparent",
                       }}
                       src={summary.image}
                       animation="fadeIn"
                       animationDuration="1s"
+                      easing="ease-in"
+                      showLoader={false}
                     />
                   </div>
 
-                  <div className="font-orbitron col-start-2 col-span-5 flex">
-                    <h1 className=" font-black text-green2 text-6xl">
+                  <div className="z-10 font-orbitron col-start-2 col-span-5 flex">
+                    <h2 className=" font-black text-green2 text-6xl">
                       {summary.id}
-                    </h1>
+                    </h2>
+
                     <p className=" border-t-2 border-gray-800 w-20 m-4 bg"></p>
 
                     <p className="mt-7 -ml-20 ">
                       {summary.name}
                       <span className="text-green2 mx-2">◆</span>
-                      {summary.category.map((cat) => cat + ", ")}
+                      {
+                      summary.category.map((cat, i) => summary.category.length - 1 === i ? (cat) :(cat + ", "))}
                       <span className="text-green2 mx-2">◆</span>
                       {summary.year}
                     </p>
                   </div>
 
-                  <div className=" font-orbitron "></div>
-
-                  <div className="col-start-2 col-span-3 ">
+                  <div className="md: z-10 col-start-2 col-span-3 sm:  ">
                     <p className="font-buenard">{summary.summary}</p>
                   </div>
+
                   <div className="flex text-xl items-center justify-around font-russo transform rotate-90 ">
                     <p className=" text-green2">
                       <a href="#" className="wavey">
